@@ -1,0 +1,102 @@
+<div class="controll-turn-btn-group" style="color: #000000" ng-show="isAdmin">
+    <div class="col-md-10 pl-0 pad-fl">
+        <div class="select-controll">
+            <!--<select name="" ng-model="appraise" ng-options="x.round for x in appraises" ng-change="appraiseSelected()" convert-to-number>-->
+            <!--</select>-->
+
+            <select ng-show="flowType == 'trunk'" ng-model="appraise.id" convert-to-number ng-change="appraiseSelected(x)">
+                <option value="请选择轮次">请选择轮次</option>
+                <option ng-repeat="x in appraises" value="{{x.id}}">第{{x.round}}轮</option>
+            </select>
+            <select ng-show="flowType == 'branch'" ng-model="appraise.id" convert-to-number ng-change="appraiseSelected(x)">
+                <option value="请选择轮次">请选择轮次</option>
+                <option ng-repeat="x in branchAppraises" value="{{x.id}}">第{{x.round}}轮</option>
+            </select>
+            <span class="caret" ></span>
+        </div>
+        <div class="select-controll">
+            <select name="" ng-model="flowType" ng-change="changeBranch()">
+                <option value="trunk">主干轮次</option>
+                <option value="branch">分支轮次</option>
+            </select>
+            <span class="caret" ></span>
+        </div>
+        <div class="search-controll">
+            <input type="text" placeholder="得票数" ng-model="getVoteNum"><button ng-click="getPicByVote(getVoteNum)">查询</button>
+            <span class="total-paper">共 <strong>{{totalElements}}</strong> 张</span>
+        </div>
+    </div>
+    <div class="col-md-1 pr-0"  ng-click="getPciListOrderById(voteNum,page,'userId');toggleId()" ng-if="toggle">
+        <button class="btn-order" >按照ID排序</button>
+    </div>
+    <div class="col-md-1 pr-0" ng-click="getPciListInitial();toggleId()"  ng-if="!toggle">
+        <button class="btn-order" >取消ID排序</button>
+    </div>
+    <div class="col-md-1 pr-0">
+        <button class=" btn-selectall" ng-click="selectAll()">全选</button>
+    </div>
+</div>
+<div id="all-works-contanier" ng-style="{height: conHeight}">
+    <div ng-repeat="img in imgs" class="img-container animated fadeInUp" ng-click="showSwiper(img.id);$event.stopPropagation()"
+         ng-style="{ left:img.left,top:img.top, height:img.height,width:img.width,position: 'absolute'}" style="background-image:url('{{img.src}}');">
+        <p class="img-title-judge-controll">{{img.title}}</p>
+        <p class="img-author-judge-controll">ID:{{img.author}}</p>
+        <img src="./content/images/multiple.png" class="multiple-sign" ng-if="img.contributeType == 'GROUP' ? true : false">
+        <div class="mask-cover" ng-show="img.mask.show"><p>{{img.mask.text}}</p></div>
+        <div class="enter" ng-controller="enterCtrl" ng-if="isAdmin && allVoted">
+            <input type="checkbox" class="hd" ng-click="$event.stopPropagation()" ng-change="checkPic(img, bool);$event.stopPropagation()" ng-model="bool" id="checkbox{{img.id}}" >
+            <label for="checkbox{{img.id}}" ng-click="$event.stopPropagation()" ng-class="{'uncheck':!bool,'checked':bool}" style="z-index: 2"></label>
+            <label ng-if="enterId ? true : ''" class="selected-img">
+                <img src="./content/images/selected.png" alt="">
+            </label>
+        </div>
+        <div class="rating" ng-controller="multiStarsCtrl">
+            <ng-repeat ng-repeat="star in stars">
+                <input type="radio" name="star{{star.id}}" />
+                <label class="full" ng-style="{color:star.color}" for="star{{star.id}}"></label>
+            </ng-repeat>
+
+        </div>
+    </div>
+</div>
+<div ng-show="picProcess" class="pacman">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="mid-swiper-body" ng-if="swiper.show" ng-controller="jdConSwiperCtrl">
+    <a class="closed" ng-click="closeSwiper()"><img src="./content/images/close-btn.png"/></a>
+
+    <div class="middle-swiper-right">
+        <!--<div>-->
+        <!--<button class="btn btn-delete">删 除</button>-->
+        <!--<button class="btn btn-drop">弃 选</button>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div>
+            <h2>
+                {{slide.title}}
+                <span>{{slide.picLocationInGroup}}/{{slide.groupSize}}</span>
+            </h2>
+
+            <p>{{slide.text}}</p>
+            <span class="middle-swiper-time"><img class="img1" src="./content/images/clock.png"/><i class="icos ico-date"></i>{{slide.shootDate | date}}</span>
+            <span class="middle-swiper-position"><img class="img1" src="./content/images/position.png"/><i class="icos ico-position"></i>{{slide.shootAddress}}</span>
+        </div>
+        <!--<button class="btn btn-primary" ng-click="closeSwiper()">关闭</button>-->
+    </div>
+    <!--<div class="middle-swiper-left full-screen">-->
+    <div ng-class="{'middle-swiper-left':switchMLBool,'full-screen':!switchMLBool}">
+        <a ng-click="switchML()" class="minimized"><img src="./content/images/min-btn.png"/></a>
+        <div class="inline-vertical-middle img-container">
+            <img src="./content/images/multiple.png" class="multiple-sign" ng-if="slide.contributeType == 'GROUP' ? true : false">
+            <img ng-src="{{slide.image}}" ng-click="switchML()">
+            <div ng-show="currentId > 1" ng-click="prev()"  class="swiper-button-prev swiper-button-white"></div>
+            <div ng-show="currentId < totalPages" ng-click="next()" tabindex="0" ng-keydown="$event.keycode == 27&&next()" class="swiper-button-next swiper-button-white"></div>
+        </div>
+    </div>
+
+</div>

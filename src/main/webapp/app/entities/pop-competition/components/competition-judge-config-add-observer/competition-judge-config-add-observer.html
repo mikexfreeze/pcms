@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">观察员信息</h3>
+</div>
+<form name="editForm" class="judge-config-add" ng-submit="vm.saveObserver()">
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="">观察员姓名</label>
+        <input type="text" class="form-control search-input" ng-model="vm.search" placeholder="请输入观察员姓名">
+        <button class="btn search-btn" type="button" ng-click="vm.searchObservers()">搜索</button>
+    </div>
+
+    <div class="scroll-control">
+        <table class="table">
+            <tbody>
+            <tr>
+                <th>观察员ID</th>
+                <th>观察员姓名</th>
+            </tr>
+            <tr ng-repeat="observer in vm.observers track by observer.id">
+                <td>{{ observer.id }}</td>
+                <!--<td>{{ observer.login }}</td>-->
+                <td>{{ observer.username }}</td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-edit" type="button" ng-click="vm.observerSelected(observer)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>选择</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="selected-judge-part">
+        <label for="">观察员姓名</label>
+        <input type="text" class="form-control" ng-model="vm.selectedObserver.login" required ng-disabled="true">
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+    <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">保存</button>
+</div>
+</form>

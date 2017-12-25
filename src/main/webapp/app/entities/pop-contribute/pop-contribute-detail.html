@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Pop Contribute</span> {{vm.popContribute.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Contribute Type</span></dt>
+        <dd>
+            <span>{{vm.popContribute.contributeType}}</span>
+        </dd>
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.popContribute.title}}</span>
+        </dd>
+        <dt><span>Asset Dir</span></dt>
+        <dd>
+            <span>{{vm.popContribute.assetDir}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.popContribute.status}}</span>
+        </dd>
+        <dt><span>Author</span></dt>
+        <dd>
+            <span>{{vm.popContribute.author}}</span>
+        </dd>
+        <dt><span>Subject</span></dt>
+        <dd>
+            <a ui-sref="pop-subject-detail({id:vm.popContribute.subjectId})">{{vm.popContribute.subjectId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-contribute-detail.edit({id:vm.popContribute.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

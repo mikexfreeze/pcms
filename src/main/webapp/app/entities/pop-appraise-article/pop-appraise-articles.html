@@ -1,0 +1,74 @@
+<div>
+    <h2>Pop Appraise Articles</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-primary" ui-sref="pop-appraise-article.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span >
+                        Create new Pop Appraise Article
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
+                    <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="status"><span>Status</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="multipleFlag"><span>Multiple Flag</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="multipleScore"><span>Multiple Score</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="revote"><span>Revote</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="appraiseId"><span>Appraise</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="contributeId"><span>Contribute</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="popAppraiseArticle in vm.popAppraiseArticles track by popAppraiseArticle.id">
+                    <td><a ui-sref="pop-appraise-article-detail({id:popAppraiseArticle.id})">{{popAppraiseArticle.id}}</a></td>
+                    <td>{{popAppraiseArticle.status}}</td>
+                    <td>{{popAppraiseArticle.multipleFlag}}</td>
+                    <td>{{popAppraiseArticle.multipleScore}}</td>
+                    <td>{{popAppraiseArticle.revote}}</td>
+                    <td>
+                        <a ui-sref="pop-appraise-detail({id:popAppraiseArticle.appraiseId})">{{popAppraiseArticle.appraiseId}}</a>
+                    </td>
+                    <td>
+                        <a ui-sref="pop-contribute-detail({id:popAppraiseArticle.contributeId})">{{popAppraiseArticle.contributeId}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="submit"
+                                    ui-sref="pop-appraise-article-detail({id:popAppraiseArticle.id})"
+                                    class="btn btn-info btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pop-appraise-article.edit({id:popAppraiseArticle.id})"
+                                    class="btn btn-primary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                            <button type="submit"
+                                    ui-sref="pop-appraise-article.delete({id:popAppraiseArticle.id})"
+                                    class="btn btn-danger btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-sm-down"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></jhi-item-count>
+    </div>
+    <uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>
+</div>

@@ -1,0 +1,45 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">新增主持人</h3>
+</div>
+<form class="competition-judge-config-add judge-config-add"  name="editForm" ng-submit="save($scope.liveId,$scope.userId)">
+    <div class="modal-body" id="modal-body">
+        <!--<div class="form-group">-->
+            <!--<label for="">主持人</label>-->
+            <!--<input type="text" class="form-control search-input" ng-model="realname" placeholder="请输入主持人姓名">-->
+            <!--<button class="btn fr search-btn" type="button" ng-click="searchHost()">搜索</button>-->
+        <!--</div>-->
+
+        <div class="scroll-control">
+            <table class="table">
+                <thead>
+                <th>主持人ID</th>
+                <th>主持人姓名</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="host in hosts">
+                    <td>{{ host.id }}</td>
+                    <td>{{ host.username }}</td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-edit" type="button" ng-click="hostSelected(host)">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span>选择</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <label for="">已选择</label><input ng-model="userName" required disabled>
+        <div class="host-color-flag">
+            <label for="">主持人颜色</label>
+            <div ng-model="hostColor" style="width: 34px;height: 27px;background-color:#d32f2f;" ></div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">保存</button>
+    </div>
+</form>

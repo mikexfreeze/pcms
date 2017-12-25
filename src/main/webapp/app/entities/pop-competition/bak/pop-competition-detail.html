@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span>Pop Competition</span> {{vm.popCompetition.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Title</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.title}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.status}}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.startDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Stop Date</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.stopDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Result Url</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.resultUrl}}</span>
+        </dd>
+        <dt><span>Content Url</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.contentUrl}}</span>
+        </dd>
+        <dt><span>Asset Dir</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.assetDir}}</span>
+        </dd>
+        <dt><span>Article Type</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.articleType}}</span>
+        </dd>
+        <dt><span>Competition Type</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.competitionType}}</span>
+        </dd>
+        <dt><span>Remark</span></dt>
+        <dd>
+            <span>{{vm.popCompetition.remark}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-competition-detail.edit({id:vm.popCompetition.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

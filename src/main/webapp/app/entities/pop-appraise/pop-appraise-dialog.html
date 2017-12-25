@@ -1,0 +1,81 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()">
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPopAppraiseLabel">Create or edit a Pop Appraise</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.popAppraise.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.popAppraise.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_round">Round</label>
+            <input type="number" class="form-control" name="round" id="field_round"
+                    ng-model="vm.popAppraise.round"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_appraiseType">Appraise Type</label>
+            <input type="text" class="form-control" name="appraiseType" id="field_appraiseType"
+                    ng-model="vm.popAppraise.appraiseType"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_pollNum">Poll Num</label>
+            <input type="text" class="form-control" name="pollNum" id="field_pollNum"
+                    ng-model="vm.popAppraise.pollNum"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_remark">Remark</label>
+            <input type="text" class="form-control" name="remark" id="field_remark"
+                    ng-model="vm.popAppraise.remark"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_awardName">Award Name</label>
+            <input type="text" class="form-control" name="awardName" id="field_awardName"
+                    ng-model="vm.popAppraise.awardName"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.popAppraise.status" id="field_status">
+                <option value="VOTING">VOTING</option>
+                <option value="FINISHED">FINISHED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_awardConfigId">Award Config Id</label>
+            <input type="text" class="form-control" name="awardConfigId" id="field_awardConfigId"
+                    ng-model="vm.popAppraise.awardConfigId"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_parentAppraise">Parent Appraise</label>
+            <input type="number" class="form-control" name="parentAppraise" id="field_parentAppraise"
+                    ng-model="vm.popAppraise.parentAppraise"
+                    />
+        </div>
+
+        <div class="form-group">
+            <label for="field_subject">Subject</label>
+            <select class="form-control" id="field_subject" name="subject" ng-model="vm.popAppraise.subjectId" ng-options="popSubject.id as popSubject.id for popSubject in vm.popsubjects"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

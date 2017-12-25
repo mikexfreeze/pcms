@@ -1,0 +1,31 @@
+
+<div>
+    <h2><span>Pop Observer</span> {{vm.popObserver.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>User Id</span></dt>
+        <dd>
+            <span>{{vm.popObserver.userId}}</span>
+        </dd>
+        <dt><span>User Name</span></dt>
+        <dd>
+            <span>{{vm.popObserver.userName}}</span>
+        </dd>
+        <dt><span>Appraise</span></dt>
+        <dd>
+            <a ui-sref="pop-appraise-detail({id:vm.popObserver.appraiseId})">{{vm.popObserver.appraiseId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-observer-detail.edit({id:vm.popObserver.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

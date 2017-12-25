@@ -1,0 +1,60 @@
+<div id="all-works-contanier" ng-style="{height: conHeight}">
+    <div ng-repeat="img in imgs" class="img-container animated fadeInUp img-container-animate" ng-click="showSwiper(img.id)"
+         ng-style="{ left:img.left,top:img.top, height:img.height,width:img.width,position: 'absolute'}" style="background-image:url('{{img.src}}');">
+        <p class="img-title img-title-animate">{{img.title}}</p>
+        <p class="img-author img-author-animate">ID:{{img.author}}</p>
+        <img src="./content/images/multiple.png" class="multiple-sign" ng-if="img.contributeType == 'GROUP' ? true : false">
+        <!--<h1 class="rating" ng-controller="ratingStarCtrl">test</h1>-->
+        <div class="rating" ng-controller="ratingStarCtrl">
+            <input type="radio" name="star{{img.id}}" ng-model="currentSelect" />
+            <label ng-click="_vote(img.contributeId, voteId);$event.stopPropagation()" class="full" for="star{{img.id}}" ng-style="{color:starColor}"></label>
+        </div>
+    </div>
+</div>
+<div ng-show="picProcess" class="pacman">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="mid-swiper-body" ng-if="swiper.show" ng-controller="swiperCtrl">
+    <a class="closed" ng-click="closeSwiper()"><img src="./content/images/close-btn.png"/></a>
+
+    <div class="middle-swiper-right">
+        <!--<div>-->
+            <!--<button class="btn btn-delete">删 除</button>-->
+            <!--<button class="btn btn-drop">弃 选</button>-->
+        <!--</div>-->
+        <div>
+            <h2>
+                {{slide.title}}
+                <span>{{slide.picLocationInGroup}}/{{slide.groupSize}}</span>
+            </h2>
+
+            <p>{{slide.text}}</p>
+            <span class="middle-swiper-time"><img class="img1" src="./content/images/clock.png"/><i class="icos ico-date"></i>{{slide.shootDate | date}}</span>
+            <span class="middle-swiper-position"><img class="img1" src="./content/images/position.png"/><i class="icos ico-position"></i>{{slide.shootAddress}}</span>
+        </div>
+        <!--<button class="btn btn-primary" ng-click="closeSwiper()">关闭</button>-->
+    </div>
+    <!--<div class="middle-swiper-left full-screen">-->
+    <div ng-class="{'middle-swiper-left':switchMLBool,'full-screen':!switchMLBool}">
+        <a ng-click="switchML()" class="minimized"><img src="./content/images/min-btn.png"/></a>
+        <div class="inline-vertical-middle img-container">
+            <!--<div class="img-star">-->
+            <img src="./content/images/multiple.png" class="multiple-sign" ng-if="slide.contributeType == 'GROUP' ? true : false">
+            <img ng-src="{{slide.image}}" ng-click="switchML()">
+                <div class="rating" ng-controller="swiperRatingStarCtrl">
+                    <input type="radio" name="star{{slide.contributeId}}" ng-model="currentSelect" />
+                    <label ng-click="_vote(slide.id, voteId);$event.stopPropagation()" class="full" for="star{{slide.id}}" ng-style="{color:starColor}" style="font-size: 12px;"></label>
+                </div>
+            <!--</div>-->
+            <div ng-show="currentId > 1" ng-click="prev()"  class="swiper-button-prev swiper-button-white"></div>
+            <div ng-show="currentId < totalPages" ng-click="next()" tabindex="0" ng-keyup="$event.keyCode === 27 && next()" tabindex="0" class="swiper-button-next swiper-button-white"></div>
+
+        </div>
+    </div>
+
+</div>

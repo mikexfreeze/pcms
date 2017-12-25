@@ -1,0 +1,826 @@
+//reset style
+a{text-decoration: none;}
+a:hover,a:focus,a:focus:active{
+    text-decoration: none;
+    outline:none ;
+}
+textarea{
+    resize: none;
+}
+
+.table{
+    table-layout:fixed;
+}
+
+:focus {
+    outline: none;
+}
+
+
+//common css
+$color249: rgb(249, 249, 249);
+.hd{display: none}
+.fr{ float: right;}
+.fl{ float: left;}
+.tx-align-r{ text-align: right;}
+.tx-align-l{ text-align:left;}
+.tx-align-c{ text-align: center;}
+.h-40{height: 40px;}
+.h-90{height:90px;}
+.pl-0{ padding-left:0;}
+.mt-10{margin-top:10px;}
+.mr-10{margin-right:10px;}
+.mr-20{margin-right:20px;}
+.mb-10{margin-bottom:10px;}
+.ml-5{margin-left:5px;}
+.ml-20{margin-left:20px}
+.pr-0{padding-right:0;}
+.pl-0{padding-left:0;}
+.pd-0{padding:0;}
+.green{color: #4ab023}
+.inline-block{display: inline-block;}
+.width-100{width:100px;}
+
+.btn-edit{
+    background-color: #5dc1e1;
+    color: #fff;
+}
+
+tr:last-child td{
+    border-bottom: 1px solid #ddd
+}
+.color-block{
+    width: 65px;
+    height: 20px;
+    //background-color: #000;
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+//common varible
+@mixin fixParent() {
+    top: 0;right: 0;bottom: 0;left: 0;
+}
+
+//common multi pro class
+.inline-vertical-middle{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    text-align:center; /* Align center inline elements */
+    font: 0/0 a;
+}
+
+.inline-vertical-middle:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+//pop-competiton-editor page
+.competitions-tab-page{
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+        background-color: $color249;
+    }
+
+    .tab-content{
+        border:1px solid #ddd;
+        border-top:none;
+        overflow: hidden;
+        background-color: $color249;
+    }
+
+    //prizeConfig img
+    .prizeConfig-img{
+        width: 100px;
+    }
+    .pop-td-name{
+        width: 200px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+
+
+}
+//pop-competitions page
+.pop-competitions{
+    .competitions-search-state{
+        display: inline-block;
+    }
+    .form-group{
+        display: inline-block;
+        width: 200px;
+    }
+    .form-control{
+        display: inline-block;
+        width: 60%;
+    }
+    .search-add-btn{
+        float: right;
+        display: inline-block;
+        margin-right:8px;
+    }
+    .competitions-add-btn{
+        margin-right:10px;
+    }
+
+    .pagination{
+        width: 100%;
+        text-align: center;
+        li{
+            display: inline-block;
+            margin-left:-4px;
+        }
+    }
+    .pagination-first{
+        margin-left:0;
+    }
+}
+
+//pop-com-publish
+.pop-competitions-publish{
+    .publish-details-wrapper{
+        border:1px solid #ddd;
+        padding-left:10px;
+        padding-right:10px;
+    }
+}
+
+//competition-judge-config-add page && competition-judge-config-add-obsever
+//judge&&obsever commom part
+.judge-config-add{
+    .color-number-edit{
+        margin-top: 20px;
+    }
+
+
+    label{
+        vertical-align: middle;
+        margin-bottom:0;
+    }
+
+    .scroll-control{
+        height: 250px;
+        overflow-y: scroll;
+        border-bottom:1px solid #ddd;
+    }
+    .search-btn{
+        background: #fff;
+        border:1px solid #ccc;
+    }
+    .search-input{
+        width: 76%;
+        display: inline-block;
+    }
+    .selected-judge-part{
+        margin-top: 20px;
+        .form-control{
+            display: inline-block;
+            width: 86%;
+        }
+    }
+    .host-color-flag{
+        margin-top:20px;
+        div{
+            display: inline-block;
+            margin-left:10px;
+            vertical-align: middle;
+        }
+    }
+}
+.competition-judge-config-add{
+    .works-nmuber{
+        display: inline-block;
+        label{
+            padding-top: 8px;
+        }
+    }
+    .colopicker-wrapper{
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .search-input{
+        width: 78%;
+        display: inline-block;
+    }
+    .selected-judge-part{
+        margin-top: 20px;
+        .form-control{
+            display: inline-block;
+            width: 87%;
+        }
+    }
+}
+
+//live-editor
+.live-editor{
+    .guest-name{
+        width: 100%;
+    }
+    .guest-name-input{
+        width: 90%;
+    }
+    .btn-search{
+        background-color:rgba(225,225,225,0.1);
+        border:1px solid #ddd;
+    }
+    label{
+        vertical-align: middle;
+        display: inline-block;
+    }
+}
+
+//color-picker-part
+.color-picker-part{
+
+    .colopicker-wrapper{
+        background-image:url(../images/colorpicker.png);
+        width: 34px;
+        height:27px;
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .colopicker-body{
+        width: 34px;
+        height:27px;
+    }
+    .hidden-colorpicker{
+        width:34px;
+        height: 27px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+        border: none;
+        outline:none;
+        opacity: 1;
+        color: transparent;
+        background-color:rgba(225,225,225,0.1)
+    }
+    .hidden-colorpicker:hover{
+        cursor: pointer;
+    }
+
+}
+
+$bgColor:#333;
+$deepBg:#242424;
+$lightBg:#262626;
+//judge page css
+.padJudge{
+    padding-top: 180px;
+}
+.allContributeCtrl{
+    padding-top: 110px;
+}
+
+.padJudgeCtrl{
+   padding-top: 220px;
+}
+
+.bodyJudge{
+    font-family:"Microsoft YaHei";
+    background-color: $bgColor;
+    color:#F0F0F0;
+
+    .modal-dialog{
+        color:#0A0A0A;
+    }
+
+    .divide-line{
+        height:1px;
+        width:100%;
+        border-bottom: 1px solid #333;
+        position: absolute;
+        top: 87px;
+    }
+    .navbar{
+        background-color: $deepBg;
+    }
+
+    .navbar-fixed-top{
+        img{
+            height: 60px;
+            width: auto;
+            padding-top:10px;
+
+        }
+        .nav-title{
+            font-size: 24px;
+        }
+        .login-icons{
+            background: url("../../../content/images/icons.png");
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            margin-right:5px;
+            margin-bottom:-2px;
+        }
+        .login-container{
+            display: inline-block;
+            margin-top:20px;
+            color: #8f8f8f;
+        }
+        .exit-container{
+            color: #8f8f8f;
+        }
+        .judge-turn{
+            font-size: 18px;
+        }
+        .judge-btn-container{
+            margin-top:10px;
+            margin-bottom:10px;
+            button{
+                background: #242424;
+                border: 1px solid #fff;
+                padding-left:10px;
+                padding-right:10px;
+                height: 34px;
+            }
+            button:hover{
+                background: #404040;
+                outline:none;
+            }
+        }
+        .cancel-btn{
+            background: #3b3d3f;
+            border: none;
+            height: 34px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        #judge-btn-container{
+            .active{
+                background: #d32f2f;
+            }
+        }
+
+        .selected-desc{
+            font-size: 16px;
+            display: inline-block;
+        }
+        .selected-number{
+            color: #d32f2f;
+            font-size: 20px;
+        }
+        .commit-btn{
+            display: inline-block;
+            background: #d32f2f;
+            width: 100px;
+            height: 40px;
+            border: none;
+            margin-top:10px;
+            margin-left:10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+    //    judge-controll part start
+        .judge-controll-btn-container{
+            margin-top:13px;
+            margin-bottom:13px;
+            button{
+                background: #3b3d3f;
+                border: none;
+                height: 34px;
+                padding-left:10px;
+                padding-right:10px;
+            }
+        }
+
+
+
+        .controll-selected-number{
+            font-size: 22px;
+        }
+        .controll-selected-desc{
+            font-size: 16px;
+        }
+    }
+
+    .controll-turn-btn-group{
+        overflow: hidden;
+        padding-bottom: 10px;
+
+        .select-controll{
+            display: inline-block;
+            position: relative;
+            margin-right:20px;
+            span{
+                position: absolute;
+                right: 10px;
+                top:17px;
+            }
+        }
+        select{
+            -moz-appearance:none;
+            -webkit-appearance:none;
+            width: 130px;
+            height: 35px;
+            padding-left:10px;
+            padding-right:10px;
+            border-radius: 0;
+            background: #fff;
+
+        }
+        input{
+            height: 35px;
+            width: 200px;
+            vertical-align: middle;
+            padding-left:10px;
+            border:0;
+        }
+        button{
+            height: 35px;
+            width: 90px;
+            vertical-align: middle;
+            background: #d32f2f;
+            border:1px solid #d32f2f;
+            color: #fff;
+        }
+        .search-controll{
+            display: inline-block;
+        }
+        .total-paper{
+            display: inline-block;
+            margin-left:10px;
+            vertical-align: middle;
+            color: #fff;
+        }
+        .btn-order{
+            width: 90px;
+        }
+        .btn-selectall{
+            width: 78px;
+        }
+    }
+    .container{
+        background-color: $lightBg;
+    }
+    .main-con-judge{
+        padding: 10px;
+    }
+
+    //loading animation
+    .pacman{
+        margin: 10px auto;
+        width: 40px;
+    }
+    .uncheck{
+        width: 18px;
+        height: 18px;
+        background:url("./../images/CheckBox.png");
+        position: absolute;
+        right: 5px;
+        bottom: 30px;
+    }
+    .checked{
+        width: 18px;
+        height: 18px;
+        background:url("./../images/CheckedBox.png");
+        position: absolute;
+        right: 5px;
+        bottom: 30px;
+    }
+}//body judge end
+
+//water fall css
+#all-works-contanier{
+    position: relative;
+    max-width: 1190px;
+    min-width: 768px;
+    padding: 0px;
+    min-height: 100px;
+
+    .img-container{
+        background-size: cover;
+        background-position: 50% 50%;
+
+        .img-title{
+            padding-left: 5px;
+            display: none;
+            transition:display 1s linear;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .img-title-judge-controll{
+            padding-left: 5px;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .selected-img{
+            position: absolute;
+            bottom:20px;
+        }
+        .img-author{
+            left: 5px;bottom: 0px;
+            position: absolute;
+            display: none;
+        }
+        .img-author-judge-controll{
+            left: 5px;
+            bottom: 0;
+            position: absolute;
+        }
+
+        .multiple-sign{
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .mask-cover{
+            position: absolute;
+            background-color: rgba(0,0,0,0.4);
+            top: 0;right: 0;bottom: 0;left: 0;
+            text-align: center;
+            vertical-align: middle;
+
+            p{
+                padding-top: 102px;
+                padding-left: 14px;
+                font-size: 2rem;
+                letter-spacing: 10px;
+            }
+        }
+
+    }
+    .img-container-animate:hover{
+        box-shadow:
+                0 0 0 0 #fff,
+                0 20px 10px 0 rgba(0,0,0,0.3) inset,
+
+                0 -20px 10px 0 rgba(0,0,0,0.3)inset,
+                0 0 0 0 #fff;
+
+        .img-title-animate{
+            display: block;
+            -webkit-animation-name: fadeIn;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-delay: 0s;
+        }
+        .img-author-animate{
+            display: block;
+            animation-name: fadeIn;
+            -webkit-animation-name: fadeIn;
+            -webkit-animation-duration: 1s;
+            -webkit-animation-iteration-count: 1;
+            -webkit-animation-delay: 0s;
+        }
+    }
+
+
+}//all-works-contanier over
+
+//middle swiper css
+.mid-swiper-body{
+    z-index: 9999;
+    position: fixed;
+    @include fixParent();
+    background-color: #333;
+    padding: 20px;
+
+    .multiple-sign{
+        position: absolute;
+        right:12px;
+        top:12px;
+    }
+
+    .closed{
+        position: absolute;
+        top: 3px;
+        right: 8px;
+    }
+
+    .middle-swiper-left{
+        //position: relative;
+        padding-right: 300px;
+        display: block;
+        height: 100%;
+
+        .minimized{
+            display: none;
+        }
+
+        .img-container{
+            background: #000;
+            right: 320px;
+            top: 20px;bottom: 20px;left: 20px;
+            -moz-user-select:none;
+            -webkit-user-select:none;
+            -ms-user-select:none;
+            -khtml-user-select:none;
+            user-select:none;
+        }
+
+        img{
+            max-width:86%;
+            max-height: 100%;
+        }
+        .img-star{
+            display: inline-block;
+            position: relative;
+            vertical-align: middle;
+        }
+        .starRating{
+            position: absolute;
+        }
+    }
+    //.middle-swiper-slide{
+    //    background: #262626;
+    //}
+    .full-screen{
+        width: 100%;
+        height: 100%;
+        //top: 0;right: 0;left: 0;bottom: 0;
+
+        .minimized{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 2;
+        }
+
+      .img-container{
+            background: #000;
+        }
+
+        img{
+            max-width:100%;
+            max-height: 100%;
+        }
+    }
+    .middle-swiper-right{
+        float: right;
+        width:300px;
+        padding:20px;
+        color: #fff;
+        background-color: #262626;
+        display: inline-block;
+        height: 100%;
+    }
+    .swiper-button-prev{
+        left:2%;
+        width: 3%;
+    }
+    .swiper-button-prev:focus{
+        outline:none;
+    }
+    .swiper-button-next:focus{
+        outline:none;
+    }
+    .swiper-button-next{
+        right:2%;
+        width: 3%;
+    }
+
+    .btn{
+        width: 49%;
+        color: #fff;
+        height: 30px;
+        background: #3b3d3f;
+        display: inline-block;
+        font-size: 14px;
+    }
+    .btn:hover{
+        background: #d32f2f;
+    }
+    .middle-swiper-time,.middle-swiper-position{
+        display: block;
+        color: #999;
+    }
+    .ico-date {
+        background-position: -22px -20px;
+    }
+    .ico-position{
+        //background: url("../images/position.png");
+        background-position-x:-2px;
+    }
+    .img1{
+        margin-right: 10px;
+    }
+
+}
+
+
+//pop-con-live
+.pop-con-live{
+    min-height: 220px;
+    .add-live-btn{
+        width: 16%;
+        margin: 0 auto;
+    }
+    .host-btn-wrapper{
+        display: inline-block;
+        float:left;
+        padding-left:15px;
+    }
+    .host-btn:hover{
+        cursor:default;
+    }
+
+}
+
+//pad
+@media (width: 768px) {
+    .pad-fl{
+        float: left;
+    }
+    .mob-mr-10{
+        margin-right:10px;
+    }
+    .pad-text-align-l{
+        text-align: left;
+    }
+    .padJudge {
+        padding-top: 150px;
+    }
+
+//    judge page css
+    .padJudgeCtrl{
+        padding-top:220px;
+    }
+    .bodyJudge{
+        .navbar-fixed-top{
+            .commit-btn {
+                width: 80px;
+            }
+        }
+    }
+    //judge-controll
+    .bodyJudge{
+        .controll-turn-btn-group{
+            padding: 10px;
+
+            input{
+                max-width: 120px;
+                border-radius: 0;
+            }
+
+        }
+        .main-con-judge{
+            padding: 0;
+            width: 768px;
+        }
+    }
+}
+
+
+//five star
+/****** Style Star Rating Widget *****/
+
+.rating {
+    border: none;
+    float: right;
+    position:absolute;
+    bottom: 0px;right:0px;
+
+    input { display: none; }
+
+    label {
+        color: #ddd;
+        float: right;
+        outline: none;
+    }
+
+    label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+        text-shadow: 0px 0px 2px #e4f303;
+    }
+}
+
+.rating > .half:before {
+    content: "\f089";
+    position: absolute;
+}
+
+.rating{
+    input:checked~label{color:#9acfea}
+}
+

@@ -1,0 +1,58 @@
+<div id="all-works-contanier" ng-style="{height: conHeight}">
+    <div ng-repeat="img in imgs" class="img-container animated fadeInUp" ng-click="showSwiper(img.id)"
+         ng-style="{ left:img.left,top:img.top, height:img.height,width:img.width,position: 'absolute'}" style="background-image:url('{{img.src}}');">
+        <p class="img-title">{{img.title}}</p>
+        <p class="img-author">ID:{{img.author}}</p>
+        <img src="./content/images/multiple.png" class="multiple-sign" ng-if="img.contributeType == 'GROUP' ? true : false">
+        <div class="mask-cover" ng-show="img.mask.show"><p>{{img.mask.text}}</p></div>
+        <div ng-show="showFlag" class="enter" ng-controller="delConCtrl">
+            <input type="checkbox" class="hd" ng-change="checkPic(img, bool)" ng-model="bool" id="checkbox{{img.id}}">
+            <label for="checkbox{{img.id}}" ng-class="{'uncheck':!bool,'checked':bool}" ng-click="$event.stopPropagation()"></label>
+            <!--<label ng-if="enterId ? true : ''" class="selected-img">-->
+                <!--<img src="./content/images/selected.png" alt="">-->
+            <!--</label>-->
+        </div>
+    </div>
+</div>
+<div ng-show="picProcess" class="pacman">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+
+<div class="mid-swiper-body" ng-if="swiper.show" ng-controller="allConSwiper">
+    <a class="closed" ng-click="closeSwiper()">
+        <img src="./content/images/close-btn.png"/>
+    </a>
+    <div class="middle-swiper-right">
+        <!--<div>-->
+            <!--<button class="btn btn-delete">删 除</button>-->
+            <!--<button class="btn btn-drop">弃 选</button>-->
+        <!--</div>-->
+        <div>
+            <h2>
+                {{slide.title}}
+                <span>{{slide.picLocationInGroup}}/{{slide.groupSize}}</span>
+            </h2>
+
+            <p>{{slide.text}}</p>
+            <span class="middle-swiper-time"><img class="img1" src="./content/images/clock.png"/><i class="icos ico-date"></i>{{slide.shootDate | date}}</span>
+            <span class="middle-swiper-position"><img class="img1" src="./content/images/position.png"/><i class="icos ico-position"></i>{{slide.shootAddress}}</span>
+        </div>
+        <!--<button class="btn btn-primary" ng-click="closeSwiper()">关闭</button>-->
+    </div>
+    <!--<div class="middle-swiper-left full-screen">-->
+    <div ng-class="{'middle-swiper-left':switchMLBool,'full-screen':!switchMLBool}">
+        <a ng-click="switchML()" class="minimized"><img src="./content/images/min-btn.png"/></a>
+        <span class="inline-vertical-middle img-container">
+            <img src="./content/images/multiple.png" class="multiple-sign" ng-if="slide.contributeType == 'GROUP' ? true : false">
+            <img ng-src="{{slide.image}}">
+            <div ng-show="currentId > 1" ng-click="prev()" class="swiper-button-prev swiper-button-white"></div>
+            <div ng-show="currentId < totalPages" ng-click="next()" class="swiper-button-next swiper-button-white"></div>
+        </span>
+
+    </div>
+
+</div>

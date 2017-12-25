@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">奖项编辑</h3>
+</div>
+<form ng-submit="updateNames()">
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label for=" ">作品名称</label>
+            <input type="text" class="form-control" ng-model="y.contributeTitle" placeholder="请输入作品名称">
+        </div>
+        <div class="form-group">
+            <label for="">作者</label>
+            <input type="text" class="form-control" ng-model="realname" placeholder="请输入作者名称">
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        <button ng-disabled="onXHR" class="btn btn-primary" type="submit">保存</button>
+        <!--<button class="btn btn-primary" type="submit">保存</button>-->
+    </div>
+</form>

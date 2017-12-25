@@ -1,0 +1,101 @@
+<div class="panel-body">
+    <form class="form-horizontal pop-con-live" name="liveForm" ng-submit="startLiveStatus()">
+        <div>
+            <div class="form-group">
+                <label for="" class="col-sm-1 control-label">直播时间</label>
+                <div class="col-sm-9">
+                    <input class="form-control"
+                               placeholder="选择开始时间"
+                               moment-picker="ctrl[0].stringDate"
+                               locale="zh-cn"
+                               format="lll"
+                               ng-model="inputStartDate"
+                               ng-model-options="{ updateOn: 'blur' }"
+                               ng-bind="$scope.liveDate"
+                               required
+                           name="tiemPicker"
+                    >
+                </div>
+                <div class="add-live-btn col-sm-1">
+                    <button  type="button" ng-click="savePopLive(competitionId)" ng-disabled="onXHR||competition.status!='SELECTION'||!inputStartDate" class="btn btn-primary btn-block">
+                        <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                        保存
+                    </button>
+                </div>
+
+            </div>
+            <div ng-show="flagNum">
+            <div class="form-group">
+                <label for="" class="col-sm-1 control-label">主持人</label>
+                <div class="host-btn-wrapper">
+                    <button class="btn btn-default host-btn" ng-show="hostId" ng-bind="host" disabled></button>
+                </div>
+                <div class="col-sm-8">
+                    <button class="btn btn-primary" ng-click="addHost()" type="button" ng-hide="hostId" ng-disabled="onXHR||competition.status!='SELECTION'">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span >新增</span>
+                    </button>
+
+                    <button class="btn btn-danger" ng-click="delHost(hostId)" type="button" ng-show="hostId" ng-disabled="onXHR||competition.status!='SELECTION'">
+                        <span class="glyphicon glyphicon-remove-sign"></span>
+                        <span >删除</span>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="col-sm-1 control-label">嘉宾</label>
+                <div class="col-sm-11">
+                <button class="btn btn-primary" ng-click="addLiveModel()" type="button" ng-disabled="onXHR||competition.status!='SELECTION'">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span>新增</span>
+                </button>
+                </div>
+            </div>
+        <br/>
+            <div class="table-responsive">
+            <table class="jh-table table table-striped">
+                <thead>
+                <tr>
+                    <th>嘉宾姓名</th>
+                    <th>标识颜色</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="guest in guests.content">
+                    <td ng-bind="guest.userName">张三</td>
+                    <td>
+                        <div class="color-block" style="background-color:{{ guest.color }};"></div>
+                    </td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-danger btn-delete" type="button" ng-click="delGuest(guest.id)" ng-disabled="competition.status!='SELECTION'">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                                <span>删除</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+            <div class="form-group">
+            <div class="col-sm-offset-5 col-sm-2">
+                <button ng-disabled="onXHR||competition.status!='SELECTION'||!hostId" type="submit" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    开启直播
+                </button>
+            </div>
+            <!--<div class="col-sm-2">-->
+                <!--<button type="button" class="btn btn-primary btn-block" ng-disabled="competition.status!='SELECTION'">-->
+                    <!--<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>-->
+                    <!--取消-->
+                <!--</button>-->
+            <!--</div>-->
+        </div>
+        </div>
+        </div>
+
+    </form>
+</div>
+

@@ -1,0 +1,42 @@
+<div class="panel-body">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <button class="btn btn-primary" ng-click="createPrizeModal()" ng-disabled="competition.status!='NOTSTART'">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span>新增</span>
+            </button>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th>奖项名称</th>
+                <th>图片</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in prizes">
+                <td class="pop-td-name">{{x.name}}</td>
+                <td><img ng-src="{{x.medalUrl}}" class="prizeConfig-img"></td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button ng-click="editorPrizeModal(x.id)" class="btn btn-edit" type="button" ng-disabled="competition.status!='NOTSTART'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>编辑</span>
+                        </button>
+                        <button ng-click="deletePrize(x.id)" class="btn btn-danger btn-delete" type="button" ng-disabled="competition.status!='NOTSTART'">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                            <span>删除</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

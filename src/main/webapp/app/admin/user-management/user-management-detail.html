@@ -1,0 +1,42 @@
+<div>
+    <h2>
+        <span>用户</span> [<b>{{vm.user.login}}</b>]
+    </h2>
+    <dl class="row jh-entity-details">
+        <dt><span>登录名</span></dt>
+        <dd>
+            <span>{{vm.user.login}}</span>
+            <span class="label label-danger" ng-show="!vm.user.activated"
+                 >未启用</span>
+            <span class="label label-success" ng-show="vm.user.activated"
+                 >启用</span>
+        </dd>
+        <dt><span>名字</span></dt>
+        <dd>{{vm.user.firstName}}</dd>
+        <dt><span>姓氏</span></dt>
+        <dd>{{vm.user.lastName}}</dd>
+        <dt><span>Email</span></dt>
+        <dd>{{vm.user.email}}</dd>
+        <dt><span>创建人</span></dt>
+        <dd>{{vm.user.createdBy}}</dd>
+        <dt><span>创建时间</span></dt>
+        <dd>{{vm.user.createdDate | date:'dd/MM/yy HH:mm' }}</dd>
+        <dt><span>上次修改人</span></dt>
+        <dd>{{vm.user.lastModifiedBy}}</dd>
+        <dt><span>上次修改时间</span></dt>
+        <dd>{{vm.user.lastModifiedDate | date:'dd/MM/yy HH:mm'}}</dd>
+        <dt><span>角色</span></dt>
+        <dd>
+            <ul class="list-unstyled">
+                <li ng-repeat="authority in vm.user.authorities">
+                    <span class="label label-info">{{authority}}</span>
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    <button type="submit"
+            ui-sref="user-management"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> 返回</span>
+    </button>
+</div>

@@ -1,0 +1,153 @@
+<div class="pop-com-judge-config">
+    <h2>评选设置</h2>
+    <jhi-alert></jhi-alert>
+    <form class="form-horizontal pop-con-live">
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">轮次</label>
+            <div class="col-sm-2">
+                <input ng-disabled="true" type="number" ng-model="vm.round" class="form-control">
+                <label ng-show="parentAppraiseId">分支</label>
+            </div>
+            <label for="" class="col-sm-2 control-label">本轮获奖集名称</label>
+            <div class="col-sm-2">
+                <select ng-model="awardConfig" ng-options="award.name for award in availableAwards"
+                        class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">评选方式</label>
+            <div class="col-sm-2">
+                <label for="" class="control-label"><input type="radio" value="投票" ng-init="bool = true"
+                                                           ng-click="bool = true" ng-model="vm.appraiseType"> 投票</label>
+                <label for="" class="control-label"><input type="radio" value="一票入选" ng-click="bool = false"
+                                                           ng-model="vm.appraiseType"> 一票入选</label>
+            </div>
+            <label for="" class="col-sm-2 control-label">评委票数</label>
+            <div class="col-sm-2">
+                <input type="number" ng-model="vm.pollNum" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">评选说明</label>
+            <div class="col-sm-11">
+                <textarea class="form-control" name="" rows="5" ng-model="vm.remark"></textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-3">
+                <button class="btn btn-primary" ng-click="save()" ng-show="isEditable">
+                    <span class="glyphicon glyphicon-save"></span>
+                    <span>保存</span>
+                </button>
+            </div>
+        </div>
+
+        <div id="moreSettings" ng-show="vm.id">
+
+            <div class="form-group">
+                <label for="" class="control-label col-sm-1">评委设置 </label>
+                <div class="col-sm-5">
+                    <button class="btn btn-primary" ng-click="addJudgeModel()" >
+                            <!--ng-show="isEditable">-->
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>新增</span>
+                    </button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-sm-1">作品数量 </label>
+                <div class="col-sm-5">
+                    <label class="control-label">{{worksNumber}}</label>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <!--<th></th>-->
+                            <th>评委</th>
+                            <th>颜色</th>
+                            <th>作品数量</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="judge in judgeVM.judges track by judge.id">
+                            <!--<td>{{ judge.id }}</td>-->
+                            <td>{{ judge.userName }}</td>
+                            <td>
+                                <div class="color-block" ng-style="{'background-color':judge.colorFlag }"></div>
+                            </td>
+                            <td>{{ judge.pollNum }}</td>
+                            <td class="tx-align-r">
+                                <button class="btn btn-danger btn-delete" type="button"
+                                        ng-click="judgeVM.removeJudge(judge)">
+                                        <!--ng-show="isEditable">-->
+                                    <span class="glyphicon glyphicon-remove-sign"></span>
+                                    <span>删除</span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="" class="control-label col-sm-1 pl-0">设置观察员</label>
+                <div class="col-sm-5">
+                    <button class="btn btn-primary" ng-click="addObserver()">
+                            <!--ng-show="isEditable">-->
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>新增</span>
+                    </button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <!--<th></th>-->
+                            <th>观察员</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="observer in observerVM.observers track by observer.id">
+                            <!--<td>{{ observer.id }}</td>-->
+                            <td>{{ observer.userName }}</td>
+                            <td class="tx-align-r">
+                                <button class="btn btn-danger btn-delete" type="button"
+                                        ng-click="observerVM.removeObserver(observer)">
+                                        <!--ng-show="isEditable">-->
+                                    <span class="glyphicon glyphicon-remove-sign"></span>
+                                    <span>删除</span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-4 col-sm-2">
+                    <button ng-disabled="onXHR || judgeVM.judges.length == 0" type="submit"
+                            class="btn btn-primary btn-block" ng-click="start()">
+                        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                        {{vm.status == 'VOTING' ? '进入评选' : '开始评选'}}
+                    </button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary btn-block" ng-click="cancel()">
+                        <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                        关闭
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>

@@ -1,0 +1,19 @@
+<div ng-cloak>
+    <div>
+        <div class="text-center" ng-switch="vm.isAuthenticated()">
+            <h1 ng-switch-when="true">尊敬的{{vm.account.username}}您好！</h1>
+            <h1 ng-switch-when="false">您好！</h1>
+            <div>
+                <div class="alert alert-success" ng-switch-when="true">
+                    欢迎登录《大众摄影》投稿评选系统。
+                </div>
+
+
+                <div class="alert alert-warning" ng-switch-when="false">
+                    请从右上角菜单登录。
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

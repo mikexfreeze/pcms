@@ -1,0 +1,28 @@
+<h1>活动编辑</h1>
+<jhi-alert></jhi-alert>
+<div class="competitions-tab-page">
+    <ul class="nav nav-tabs" >
+        <!--<li ng-class="{active: (curState.name == 'pop-competition.tabPage') || (curState.name == 'com-tab-page-editor')}" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="活动信息" ui-sref="com-tab-page-editor">-->
+        <li ng-class="" ui-sref-active="active" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="活动编辑" ui-sref="com-tab-page-editor">
+        <a class="nav-link ng-binding">活动信息</a>
+        </li>
+        <li ng-class="" ui-sref-active="active" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="主题" ui-sref="com-tab-page-theme">
+            <a class="nav-link ng-binding">主题</a>
+        </li>
+        <li ng-class="" ui-sref-active="active" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="奖项设置" ui-sref="com-tab-page-prize">
+            <a class="nav-link ng-binding">奖项设置</a>
+        </li>
+        <li ng-class="" ui-sref-active="active" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="公示/公布" ui-sref="com-tab-page-publish">
+            <a class="nav-link ng-binding">公示/公布</a>
+        </li>
+        <li ng-class="" ui-sref-active="active" class="uib-tab nav-item ng-scope ng-isolate-scope" heading="直播" ui-sref="com-tab-page-live">
+            <a class="nav-link ng-binding">直播</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <ui-view name="compet-tab-content"></ui-view>
+    </div>
+
+
+
+</div>

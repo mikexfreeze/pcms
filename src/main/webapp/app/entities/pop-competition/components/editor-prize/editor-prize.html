@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">奖项设置</h3>
+</div>
+<form ng-submit="updatePrize()">
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label for="">奖项名称</label>
+            <input type="text" class="form-control" ng-model="name" placeholder="请输入奖项名称">
+        </div>
+        <div class="form-group">
+            <!--<label for="">图片</label>-->
+            <button ngf-select="upLoadimg()" ng-model="upLoadImg" ngf-pattern="'image/*'" ngf-accept="'image/*'" required>
+            选择图片
+            </button>
+            <img ngf-src="upLoadImg" alt="" style="width:40px;height: 40px">
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-default" type="button" ng-click="cancel()">
+            <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+            取消
+        </button>
+        <button ng-disabled="onXHR||!upLoadImg" class="btn btn-primary" type="submit">
+            <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+            保存
+        </button>
+        <!--<button class="btn btn-primary" type="submit">保存</button>-->
+    </div>
+</form>

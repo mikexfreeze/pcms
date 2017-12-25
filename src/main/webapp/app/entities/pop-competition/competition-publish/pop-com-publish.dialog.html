@@ -1,0 +1,42 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">新增观察员</h3>
+</div>
+<form>
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="">评委姓名</label>
+        <input type="text" class="form-control" ng-model="vm.search" placeholder="请输入观察员姓名">
+        <button class="btn" type="button" ng-click="vm.searchObservers()">搜索</button>
+    </div>
+
+    <div>
+        <table class="table">
+            <tbody>
+            <tr ng-repeat="observer in vm.observers track by observer.id">
+                <td>{{ observer.id }}</td>
+                <td>{{ observer.login }}</td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-edit" type="button" ng-click="vm.observerSelected(observer)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>选择</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+    <div class="form-group">
+        <label for="">观察员姓名</label>
+        <input type="text" class="form-control" ng-model="vm.selectedObserver.login">
+    </div>
+
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+    <button class="btn btn-primary" type="submit" ng-click="vm.saveObserver()">保存</button>
+</div>
+</form>

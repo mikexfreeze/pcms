@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Pop Vote</span> {{vm.popVote.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.popVote.status}}</span>
+        </dd>
+        <dt><span>Vote Type</span></dt>
+        <dd>
+            <span>{{vm.popVote.voteType}}</span>
+        </dd>
+        <dt><span>Judge</span></dt>
+        <dd>
+            <a ui-sref="pop-judge-detail({id:vm.popVote.judgeId})">{{vm.popVote.judgeId}}</a>
+        </dd>
+        <dt><span>Contribute</span></dt>
+        <dd>
+            <a ui-sref="pop-contribute-detail({id:vm.popVote.contributeId})">{{vm.popVote.contributeId}}</a>
+        </dd>
+        <dt><span>Appraise</span></dt>
+        <dd>
+            <a ui-sref="pop-appraise-detail({id:vm.popVote.appraiseId})">{{vm.popVote.appraiseId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-vote-detail.edit({id:vm.popVote.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

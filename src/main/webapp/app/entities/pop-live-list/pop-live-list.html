@@ -1,0 +1,29 @@
+<div>
+    <h2>直播列表</h2>
+    <br>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th>活动名称</th>
+                <th>直播时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in list">
+                <td>{{x.competitionName}}</td>
+                <td>{{x.liveDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <a class="btn btn-edit" type="button" href="http://118.187.50.42/personal-center-sit/index.html#!/live?liveId={{x.id}}&userId={{userId}}&competitionId={{x.competitionId}}">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            <span>进入直播</span>
+                        </a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="5" class="pagination" boundary-link-numbers="true" previous-text="<" next-text=">" rotate="false" ng-change="pageChanged()"></ul>
+</div>

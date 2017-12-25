@@ -1,0 +1,93 @@
+<div class="pop-competitions">
+    <h2>活动管理</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="competitions-search-state">
+                <div class="form-group">
+                    <span class="competitions-name">活动名称</span>
+                    <input type="text" class="form-control" ng-model="keyword" ng-change="getByKeyword()">
+                </div>
+                <div class="form-group">
+                    <span class="competitions-now-state">活动状态</span>
+                    <select name="competitions-state" id="" class="form-control" ng-model="status" ng-change="getByStatus()">
+                        <option value="">全部</option>
+                        <option value="NOTSTART">未开始</option>
+                        <option value="FILLING_IN">征稿中</option>
+                        <option value="FILLING_END">已截稿</option>
+                        <option value="LIVE_IN">直播中</option>
+                        <option value="SELECTION">评选中</option>
+                        <option value="FILLING_PUBLIC">公示中</option>
+                        <option value="FILLING_RELA">已公布</option>
+                        <option value="FILLING_DELAY">延期截稿</option>
+                    </select>
+                </div>
+            </div>
+            <div class="search-add-btn">
+                <div class="no-padding-left fr competitions-search-btn">
+                    <button class="btn btn-primary" ui-sref="pop-competition.new">
+                        <span class="glyphicon glyphicon-search"></span>
+                        <span>
+                        查询
+                    </span>
+                    </button>
+                </div>
+
+                <div class="no-padding-left fr competitions-add-btn">
+                    <button class="btn btn-primary" ui-sref="com-tab-page-editor">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <span>
+                        新增
+                    </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th>活动名称</th>
+                <th style="width: 100px;">活动ID</th>
+                <th>投稿人数/数量</th>
+                <!--<th>投稿数量</th>-->
+                <th>活动状态</th>
+                <th>征稿开始时间</th>
+                <th>征稿截止时间</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in popCompetition">
+                    <td ng-bind="x.title"></td>
+                    <td ng-bind="x.id"></td>
+                    <td ng-controller="ConPeopleNumCtrl">{{numObj.authNum}}/{{numObj.contributeNum}}</td>
+                    <td ng-bind="x.status | popCompetitonFilter"></td>
+                    <td ng-bind="x.startDate | date : 'yyyy-MM-dd HH:mm:ss' "></td>
+                    <td ng-bind="x.stopDate | date : 'yyyy-MM-dd HH:mm:ss'"></td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-edit" type="button"  ui-sref="com-tab-page-editor({competitionId:x.id})">
+                            <!--<button class="btn btn-edit" type="button"  ng-click="go(x.id)">-->
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span>编辑</span>
+                            </button>
+                            <button class="btn btn-danger btn-delete" ng-disabled="x.status != 'NOTSTART'" type="button" ng-click="delModel(x.id)">
+                                <span class="glyphicon glyphicon-remove-sign"></span>
+                                <span>删除</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!--<div class="text-center">-->
+        <!--<jhi-item-count page="totalPages" total="totalELements" items-per-page="20"></jhi-item-count>-->
+    <!--</div>-->
+    <!--<uib-pager total-items="vm.totalItems" ng-model="vm.page" ng-change="vm.transition()"></uib-pager>-->
+    <ul uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="5" class="pagination" boundary-link-numbers="true" previous-text="<" next-text=">" rotate="false" ng-change="pageChanged()"></ul>
+    <!--<uib-pagination total-items="totalELements" ng-model="vm.page" ng-change="vm.transition()" first-text="<<" previous-text="<" next-text=">" last-text=">>" boundary-links="true" boundary-link-numbers="true" iterms-perpage="10"></uib-pagination>-->
+    <!--<uib-pagination total-items="totalItems" ng-model="vm.page" ng-change="pageChanged()" first-text="<<" previous-text="<" next-text=">" last-text=">>" boundary-links="true" boundary-link-numbers="true" iterms-perpage="10"></uib-pagination>-->
+</div>

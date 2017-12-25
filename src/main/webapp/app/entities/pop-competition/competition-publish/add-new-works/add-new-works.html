@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">新增作品</h3>
+</div>
+<form class="competition-judge-config-add judge-config-add">
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label for="">作者姓名</label>
+            <input type="text" class="form-control search-input" ng-model="realname" placeholder="请输入作者姓名">
+            <button class="btn fr search-btn" type="button" ng-click="searchUser()">搜索</button>
+        </div>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <th>真实姓名</th>
+                    <th>手机</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="user in usersList">
+                    <td>{{ user.realname }}</td>
+                    <td>{{ user.mobile }}</td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-edit" type="button" ng-click="searchConbute(user.userId)">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span>选择</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="scroll-control">
+            <table class="table">
+                <thead>
+                <th>作品名称</th>
+                <th>作品类型</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="conbute in conbuteList">
+                    <td>{{ conbute.title }}</td>
+                    <td>{{ conbute.contributeType | contributeType }}</td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-edit" type="button" ng-click="addConAward(conbute.id)">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                <span>新增</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+        <!--<button class="btn btn-primary" type="submit" ng-click="vm.save()">保存</button>-->
+    </div>
+</form>

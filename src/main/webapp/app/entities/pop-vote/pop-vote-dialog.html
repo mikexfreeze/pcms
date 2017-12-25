@@ -1,0 +1,64 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myPopVoteLabel">Create or edit a Pop Vote</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.popVote.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.popVote.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_status">Status</label>
+            <select class="form-control" name="status" ng-model="vm.popVote.status" id="field_status">
+                <option value="SELECTED">SELECTED</option>
+                <option value="UNSELECTED">UNSELECTED</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="field_voteType">Vote Type</label>
+            <select class="form-control" name="voteType" ng-model="vm.popVote.voteType" id="field_voteType">
+                <option value="TRUNK">TRUNK</option>
+                <option value="BRANCH">BRANCH</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="field_judge">Judge</label>
+            <select class="form-control" id="field_judge" name="judge" ng-model="vm.popVote.judgeId" ng-options="popJudge.id as popJudge.id for popJudge in vm.popjudges"            >
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="field_contribute">Contribute</label>
+            <select class="form-control" id="field_contribute" name="contribute" ng-model="vm.popVote.contributeId" ng-options="popContribute.id as popContribute.id for popContribute in vm.contributes | orderBy:'id'" required>
+                <option value=""></option>
+            </select>
+        </div>
+        <div ng-show="editForm.contribute.$invalid">
+            <p class="help-block"
+                ng-show="editForm.contribute.$error.required">
+                This field is required.
+            </p>
+        </div>
+        <div class="form-group">
+            <label for="field_appraise">Appraise</label>
+            <select class="form-control" id="field_appraise" name="appraise" ng-model="vm.popVote.appraiseId" ng-options="popAppraise.id as popAppraise.id for popAppraise in vm.popappraises"            >
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

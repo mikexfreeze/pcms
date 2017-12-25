@@ -1,0 +1,50 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">新增嘉宾</h3>
+</div>
+<form class="live-editor" ng-submit="save()" name="editForm">
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <label for=" " class="control-label guest-name">嘉宾姓名</label>
+            <input type="text" class="form-control col-sm-7 guest-name-input" ng-model="vm.search"  placeholder="请输入嘉宾姓名">
+            <button class="btn fr btn-search" type="button" ng-click="vm.searchGuest()">搜索</button>
+        </div>
+        <div class="scroll-control">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>嘉宾ID</th>
+                    <th>嘉宾姓名</th>
+                </tr>
+                <tr ng-repeat="guest in guests track by $index">
+                    <td>{{ guest.id}}</td>
+                    <td>{{ guest.username}}</td>
+                    <td class="tx-align-r">
+                        <div role="group" class="btn-group">
+                            <button class="btn btn-edit" type="button" ng-click="guestSelected(guest)">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span>选择</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="color-picker-part">
+            <label for="">已选择</label><input ng-model="userName" required disabled>
+            <div>
+                <label for=" " class="control-label mt-10">标识颜色</label>
+                <div class="colopicker-wrapper" ng-click="openColorPicker()">
+                <div style="background-color: {{color_picker}};" class="colopicker-body">
+                    <img src="content/images/colorpicker.png" alt="" ng-show="flag" ng-init="flag = true">
+                </div>
+                    <input colorpicker="hex" type="text" ng-model="color_picker" required ng-click="flag = false;" class="hidden-colorpicker"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid" >保存</button>
+    </div>
+</form>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-fixed-top">
+    <div class="divide-line"></div>
+
+    <div class="container pd-0">
+
+        <div class="row">
+        <div class="col-md-2 col-sm-2 logo-container h-90">
+            <a href="http://118.187.50.42/pcms-web/#/">
+                <img src="./content/images/logo.png" alt="">
+            </a>
+        </div>
+
+
+        <div class="col-md-8 col-sm-8 tx-align-c h-90" >
+            <h2 class="nav-title" ng-bind="subject.name"></h2>
+        </div>
+        <!--<div class="col-md-2 tx-align-r h-90">-->
+            <!--<a href="#" class="login-container">-->
+                <!--<i class="login-icons"></i>-->
+                <!--<label class="login-btn">登陆</label>-->
+            <!--</a>-->
+        <!--</div>-->
+    </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-2 h-40">
+                <h3 class="judge-turn">第{{ appraise.round }}轮评选</h3>
+            </div>
+            <div class="col-md-4 col-sm-6 tx-align-c judge-btn-container" id="judge-btn-container">
+                <button class="mr-20" ng-class="{active : activeMenu == 'All'}" ng-click="activeMenu = 'All';getPicList();">全部作品</button>
+                <button class="mr-20" ng-class="{active : activeMenu == 'unSelected'}" ng-click="activeMenu = 'unSelected';getPicList('null');">未选作品</button>
+                <button ng-class="{active : activeMenu == 'Selected'}" ng-click="activeMenu = 'Selected';getPicList('SELECTED');">已选作品</button>
+            </div>
+            <div class="col-md-4 col-sm-4 tx-align-r h-40">
+                <button class="fr commit-btn" ng-click="submit()" ng-show="activeMenu =='Selected'">确认提交</button>
+                <button class="fr commit-btn" ng-show="activeMenu != 'Selected'" ng-click="activeMenu = 'Selected';getPicList('SELECTED');" ng-bind="(activeMenu=='Selected'?'确认提交':'我选好了')"></button>
+                <h3 class="selected-desc">您已选中<span class="selected-number">{{ votedCount }}</span>个作品</h3>
+            </div>
+        </div>
+    </div>
+</nav>

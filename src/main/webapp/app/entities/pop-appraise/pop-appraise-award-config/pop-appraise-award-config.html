@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">奖项设置</h3>
+</div>
+<form name="editForm" class="competition-judge-config-add judge-config-add" ng-submit="vm.save()">
+<div class="modal-body" id="modal-body">
+    <div class="form-group">
+        <label for="" class="col-sm-4 control-label">本轮获奖集名称</label>
+        <div class="col-sm-6">
+            <select ng-model="vm.awardConfig" ng-options="award.name for award in availableAwards"
+                    class="form-control">
+            </select>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
+    <button class="btn btn-primary" type="submit" ng-disabled="editForm.$invalid">保存</button>
+</div>
+</form>

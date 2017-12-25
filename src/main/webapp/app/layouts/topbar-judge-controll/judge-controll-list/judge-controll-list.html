@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">评委列表</h3>
+</div>
+<form name="editForm" class="competition-judge-config-add judge-config-add" ng-submit="vm.save()">
+<div class="modal-body" id="modal-body">
+    <div class="scroll-control">
+        <table class="table">
+            <tbody>
+            <tr ng-repeat="judge in vm.judges track by judge.id">
+                <td>{{ judge.id }}</td>
+                <td>{{ judge.login }}</td>
+                <td>{{ judge.userName }}</td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-edit" type="button" ng-click="vm.reset(judge)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>重置</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="cancel()">关闭</button>
+</div>
+</form>

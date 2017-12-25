@@ -1,0 +1,60 @@
+<div class="panel-body">
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <button class="btn btn-primary" ng-click="addThemeModel()" ng-disabled="competition.status!='NOTSTART'">
+                <span class="glyphicon glyphicon-plus"></span>
+                <span>新增</span>
+            </button>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th class="width-100">主题名称</th>
+                <th class="width-100">限制作品数量</th>
+                <th class="width-100">限制组照数量</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in themeData">
+                <td class="pop-td-name" ng-bind="x.name"></td>
+                <td ng-bind="x.maxLimit"></td>
+                <td ng-bind="x.groupMaxLimit"></td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-warning" type="button" ui-sref="pop-competition.pop-com-judge-config({subjectId: x.id})" ng-disabled="x.status=='VOTE_FINISH'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>评选设置</span>
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="reset(x.id)" ng-disabled="x.status!='VOTE_FINISH'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>重启评选</span>
+                        </button>
+                        <button class="btn btn-warning" type="button" ui-sref="pop-competition-theme-pop-appraise({subjectId: x.id})">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>轮次</span>
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="resetAll(x.id)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>全部重置</span>
+                        </button>
+                        <button ng-click="updateThemeModel(x.id)" class="btn btn-edit" type="button" ng-disabled="competition.status!='NOTSTART'">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>编辑</span>
+                        </button>
+                        <button ng-click="deleteTheme(x.id)" class="btn btn-danger btn-delete" type="button" ng-disabled="competition.status!='NOTSTART'">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                            <span>删除</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

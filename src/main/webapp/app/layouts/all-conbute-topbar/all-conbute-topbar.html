@@ -1,0 +1,25 @@
+<nav class="navbar navbar-fixed-top ">
+    <div class="divide-line" ng-show="showFlag"></div>
+
+    <div class="container pd-0">
+        <div class="row">
+            <div class="col-sm-2 logo-container h-90">
+                <a href="{{indexLink}}">
+                    <img src="./content/images/logo.png" alt="">
+                </a>
+            </div>
+
+            <div class="col-sm-8 tx-align-c h-90" >
+                <h2 class="nav-title" ng-bind="subject.name"></h2>
+            </div>
+        </div>
+        <div class="row" ng-show="showFlag">
+            <div class="col-sm-12 col-md-7 judge-controll-btn-container">
+                <!--<button class="mr-10" ng-click="enter()">作品入选</button>-->
+                <!--<button class="mr-10" ng-click="abandon()">作品弃选</button>-->
+                <button class="mr-10" ng-click="delete()">作品删除</button>
+            </div>
+
+        </div>
+    </div>
+</nav>

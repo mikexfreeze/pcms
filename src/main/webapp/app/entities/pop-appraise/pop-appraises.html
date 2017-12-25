@@ -1,0 +1,41 @@
+<div class="panel-body">
+
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th>轮次</th>
+                <th>奖项</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in vm.popAppraises track by x.id">
+                <td class="pop-td-name" ng-bind="x.round"></td>
+                <td ng-bind="x.awardName"></td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-warning" type="button" ng-click="configAward(x)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>奖项设置</span>
+                        </button>
+                        <button class="btn btn-warning" type="button" ng-click="export(x)">
+                            <span class="glyphicon glyphicon-export"></span>
+                            <span>导出</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-3">
+            <button ng-disabled="onXHR" type="submit" ng-click="generate()" class="btn btn-primary btn-block">
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                生成公布公示结果
+            </button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,130 @@
+<div class="panel-body">
+
+    <form class="form-horizontal" ng-submit="update()">
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">活动名称</label>
+            <div class="col-sm-11">
+                <input ng-model="comData.title" type="text" class="form-control" id="" placeholder="请输入活动名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">活动状态</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="comData.status">
+                    <option value="NOTSTART">未开始</option>
+                    <option value="FILLING_IN">征稿中</option>
+                    <option value="FILLING_END">已截稿</option>
+                    <option value="LIVE_IN">直播中</option>
+                    <option value="SELECTION">评选中</option>
+                    <option value="FILLING_PUBLIC">公示中</option>
+                    <option value="FILLING_RELA">已公布</option>
+                    <option value="FILLING_DELAY">延期截稿</option>
+                </select>
+            </div>
+
+            <label for="" class="col-sm-1 control-label">活动形式</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="comData.competitionType">
+                    <option value="ONLINE">线上</option>
+                    <option value="OFFLINE">线下</option>
+                </select>
+            </div>
+            <label for="" class="col-sm-1 control-label">作品类型</label>
+            <div class="col-sm-3">
+                <select class="form-control" ng-model="comData.articleType">
+                    <option value="SINGLE_GROUP">组照+单幅</option>
+                    <option value="SINGLE">单幅</option>
+                    <option value="GROUP">组照</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">活动封面</label>
+            <div class="col-sm-11">
+                <input ng-model="comData.assetDir" type="text" class="form-control" id="" placeholder="请输入活动封面地址链接">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">征稿页面</label>
+            <div class="col-sm-11">
+                <input ng-model="comData.contentUrl" type="text" class="form-control" id="" placeholder="请输入征稿页面地址链接">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">活动简介</label>
+            <div class="col-sm-11">
+                <textarea ng-model="comData.remark" class="form-control" rows="5" placeholder="请输入简介"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">开始时间</label>
+            <div class="col-sm-5">
+                <input class="form-control"
+                       placeholder="选择开始时间"
+                       moment-picker="ctrl[0].stringDate"
+                       locale="zh-cn"
+                       format="lll"
+                       ng-model="comData.inputStartDate"
+                       ng-model-options="{ updateOn: 'blur' }">
+            </div>
+            <label for="" class="col-sm-1 control-label">结束时间</label>
+            <div class="col-sm-5">
+                <input class="form-control"
+                       placeholder="选择结束时间"
+                       moment-picker="ctrl[1].stringDate"
+                       locale="zh-cn"
+                       format="lll"
+                       ng-model="comData.inputStopDate"
+                       change="changeStopDate()"
+                       ng-model-options="{ updateOn: 'blur' }">
+
+                <!--<input ng-model="comData.inputStopDate" class="form-control" type="datetime-local">-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="" class="col-sm-1 control-label">结果页面</label>
+            <div class="col-sm-11">
+                <input ng-model="comData.resultUrl" type="text" class="form-control" id="" placeholder="请输入获奖结果页面地址链接">
+            </div>
+        </div>
+        <!--<div class="form-group">-->
+            <!--<label for="" class="col-sm-1 control-label">备注</label>-->
+            <!--<div class="col-sm-11">-->
+                <!--<textarea ng-model="comData.remark" class="form-control" rows="5"></textarea>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-2">
+                <button ng-disabled="onXHR" type="submit" class="btn btn-primary btn-block">
+                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                    保存
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-block" ng-click="delayCompetition()" ng-disabled="comData.status!='FILLING_IN' && comData.status!='FILLING_END'">
+                    <span class="glyphicon glyphicon-hourglass" aria-hidden="true"></span>
+                    延期截稿
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <a ui-sref="allContube({competitionId:competitionId,role:'admin'})" type="button" class="btn btn-primary btn-block" target='_blank'>
+                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                    全部作品
+                </a>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-block" ngf-select="importCompetition($file)">
+                    <span class="glyphicon glyphicon-import" aria-hidden="true"></span>
+                    导入
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="btn btn-primary btn-block" ng-click="exportCompetition()">
+                    <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
+                    导出
+                </button>
+            </div>
+        </div>
+    </form>
+
+</div>

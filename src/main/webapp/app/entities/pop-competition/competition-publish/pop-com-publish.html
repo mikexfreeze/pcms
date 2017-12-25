@@ -1,0 +1,149 @@
+
+<div class="panel-body pop-competitions-publish" ng-repeat="x in themes">
+    <h2>主题：{{x.name}}</h2>
+    <div class="publish-details-wrapper">
+        <div ng-controller="publishAwardsLevelCtrl">
+            <ng-repeat ng-repeat="z in Prizes">
+                <div class="container-fluid">
+                    <div class="row">
+                        <h3>{{z.name}}</h3>
+                        <button class="btn btn-primary" ng-click="addThemeModel(z)">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            <span>新增</span>
+                        </button>
+                        <button class="btn btn-primary" ng-click="editThemeModel(z)">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            <span>编辑</span>
+                        </button>
+                        <!--<button class="btn btn-primary">-->
+                            <!--<span class="glyphicon glyphicon-grain"></span>-->
+                            <!--<span>奖章编辑</span>-->
+                        <!--</button>-->
+                    </div>
+                </div>
+                <br/>
+                <div class="table-responsive">
+                    <table class="jh-table table table-striped">
+                        <thead>
+                        <tr>
+                            <th>作品名称</th>
+                            <th>作者</th>
+                            <th>作品类型</th>
+                        </tr>
+                        </thead>
+                        <tbody ng-controller="publishAwardsCtrl">
+                        <tr ng-repeat="y in awards">
+                            <td>{{y.contributeTitle}}</td>
+                            <td ng-controller="publishUserNameCtrl">{{user.realname}}</td>
+                            <td>{{y.contributeType | conType}}</td>
+                            <td class="tx-align-r">
+                                <div role="group" class="btn-group">
+                                    <button class="btn btn-edit" type="button" ng-click="editorNameModal(y)">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                        <span>编辑</span>
+                                    </button>
+                                    <button class="btn btn-danger btn-delete" type="button" ng-click="deleteWorks({contributeId:y.contributeId,awardId:z.id})">
+                                        <span class="glyphicon glyphicon-remove-sign"></span>
+                                        <span>删除</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </ng-repeat>
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="panel-body">
+
+<div class="form-group">
+    <!--<div class="col-sm-offset-1 col-sm-2">-->
+        <!--<button ng-disabled="onXHR" type="submit" class="btn btn-primary btn-block">-->
+            <!--<span class="glyphicon glyphicon-erase" aria-hidden="true"></span>-->
+            <!--修改-->
+        <!--</button>-->
+    <!--</div>-->
+    <div class="col-sm-offset-3 col-sm-2">
+        <button type="button" class="btn btn-primary btn-block" ng-click="exportWorks()" ng-disabled="onXHR">
+            <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+            导出
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-primary btn-block" ng-click="announce()">
+            <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+            公布
+        </button>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-primary btn-block" ng-click="publish()">
+            <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+            公示
+        </button>
+    </div>
+    <!--<div class="col-sm-2">-->
+        <!--<button type="button" class="btn btn-primary btn-block">-->
+            <!--<span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>-->
+            <!--取消-->
+        <!--</button>-->
+    <!--</div>-->
+</div>
+</div>
+
+<!--<div class="panel-body pop-competitions-publish">-->
+    <!--<h2>主题：白天鹅系列</h2>-->
+    <!--<div class="publish-details-wrapper">-->
+        <!--<div class="container-fluid">-->
+            <!--<div class="row">-->
+                <!--<h3>一等奖</h3>-->
+                <!--<button class="btn btn-primary" ng-click="addThemeModel()">-->
+                    <!--<span class="glyphicon glyphicon-plus"></span>-->
+                    <!--<span>新增</span>-->
+                <!--</button>-->
+                <!--<button class="btn btn-primary">-->
+                    <!--<span class="glyphicon glyphicon-grain"></span>-->
+                    <!--<span>奖章编辑</span>-->
+                <!--</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<br/>-->
+        <!--<div class="table-responsive">-->
+            <!--<table class="jh-table table table-striped">-->
+                <!--<thead>-->
+                <!--<tr>-->
+                    <!--<th>作品名称</th>-->
+                    <!--<th>主题</th>-->
+                    <!--<th>作者</th>-->
+                    <!--<th>作品类型</th>-->
+                <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody>-->
+                <!--<tr>-->
+                    <!--<td>天鹅戏水</td>-->
+                    <!--<td>白天鹅系列</td>-->
+                    <!--<td>红尘</td>-->
+                    <!--<td>单幅</td>-->
+                    <!--<td class="tx-align-r">-->
+                        <!--<div role="group" class="btn-group">-->
+                            <!--<button class="btn btn-edit" type="button" >-->
+                                <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                <!--<span>编辑</span>-->
+                            <!--</button>-->
+                            <!--<button class="btn btn-danger btn-delete" type="button">-->
+                                <!--<span class="glyphicon glyphicon-remove-sign"></span>-->
+                                <!--<span>删除</span>-->
+                            <!--</button>-->
+                        <!--</div>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

@@ -1,0 +1,39 @@
+
+<div>
+    <h2><span>Pop Picture</span> {{vm.popPicture.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Pic Path</span></dt>
+        <dd>
+            <span>{{vm.popPicture.picPath}}</span>
+        </dd>
+        <dt><span>Remark</span></dt>
+        <dd>
+            <span>{{vm.popPicture.remark}}</span>
+        </dd>
+        <dt><span>Shoot Address</span></dt>
+        <dd>
+            <span>{{vm.popPicture.shootAddress}}</span>
+        </dd>
+        <dt><span>Shoot Date</span></dt>
+        <dd>
+            <span>{{vm.popPicture.shootDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span>Contribute</span></dt>
+        <dd>
+            <a ui-sref="pop-contribute-detail({id:vm.popPicture.contributeId})">{{vm.popPicture.contributeId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-picture-detail.edit({id:vm.popPicture.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

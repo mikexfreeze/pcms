@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span>Pop Subject</span> {{vm.popSubject.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{vm.popSubject.name}}</span>
+        </dd>
+        <dt><span>Max Limit</span></dt>
+        <dd>
+            <span>{{vm.popSubject.maxLimit}}</span>
+        </dd>
+        <dt><span>Group Max Limit</span></dt>
+        <dd>
+            <span>{{vm.popSubject.groupMaxLimit}}</span>
+        </dd>
+        <dt><span>Asset Dir</span></dt>
+        <dd>
+            <span>{{vm.popSubject.assetDir}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.popSubject.status}}</span>
+        </dd>
+        <dt><span>Competition</span></dt>
+        <dd>
+            <a ui-sref="pop-competition-detail({id:vm.popSubject.competitionId})">{{vm.popSubject.competitionId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-subject-detail.edit({id:vm.popSubject.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

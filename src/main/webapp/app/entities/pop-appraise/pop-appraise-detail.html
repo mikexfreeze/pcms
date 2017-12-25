@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span>Pop Appraise</span> {{vm.popAppraise.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row jh-entity-details">
+        <dt><span>Round</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.round}}</span>
+        </dd>
+        <dt><span>Appraise Type</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.appraiseType}}</span>
+        </dd>
+        <dt><span>Poll Num</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.pollNum}}</span>
+        </dd>
+        <dt><span>Remark</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.remark}}</span>
+        </dd>
+        <dt><span>Award Name</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.awardName}}</span>
+        </dd>
+        <dt><span>Status</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.status}}</span>
+        </dd>
+        <dt><span>Award Config Id</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.awardConfigId}}</span>
+        </dd>
+        <dt><span>Parent Appraise</span></dt>
+        <dd>
+            <span>{{vm.popAppraise.parentAppraise}}</span>
+        </dd>
+        <dt><span>Subject</span></dt>
+        <dd>
+            <a ui-sref="pop-subject-detail({id:vm.popAppraise.subjectId})">{{vm.popAppraise.subjectId}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button" ui-sref="pop-appraise-detail.edit({id:vm.popAppraise.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-sm-down"> Edit</span>
+    </button>
+</div>

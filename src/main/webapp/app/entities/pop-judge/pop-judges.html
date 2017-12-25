@@ -1,0 +1,50 @@
+<div>
+    <h2>评委评选列表</h2>
+    <form class="form-inline">
+        <div class="form-group">
+            <span>评选状态</span>
+            <select name="competitions-state" id="" class="form-control" ng-model="status" ng-change="getByStatus()">
+                <option value="">全部</option>
+                <option value="BEGIN">尚未开始</option>
+                <option value="VOTING">正在评选</option>
+                <option value="FINISHED">已评选</option>
+            </select>
+        </div>
+    </form>
+    <br>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+            <tr>
+                <th>活动名称</th>
+                <th>活动主题</th>
+                <th>角色</th>
+                <th>轮次</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="x in subjects">
+                <td ng-bind="x.competitionTitle ? x.competitionTitle : x.competitionTile"></td>
+                <td ng-bind="x.subjectName"></td>
+                <td ng-bind="x.userName ? '评委' : '观察员'"></td>
+                <td>第{{ x.round }}轮{{ x.parentAppraiseId ? '(分支)' : '' }}</td>
+                <td class="tx-align-r">
+                    <div role="group" class="btn-group">
+                        <button class="btn btn-edit" type="button" ng-click="start(x)">
+                            <span class="glyphicon glyphicon-edit"></span>
+                            <span>评选详情</span>
+                        </button>
+                        <!--<button class="btn btn-danger btn-delete" type="button" ng-click="delModel(x.id)">-->
+                            <!--<span class="glyphicon glyphicon-remove-sign"></span>-->
+                            <!--<span>删除</span>-->
+                        <!--</button>-->
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <ul uib-pagination items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="5" class="pagination" boundary-link-numbers="true" previous-text="<" next-text=">" rotate="false" ng-change="pageChanged()"></ul>
+
+
+</div>
